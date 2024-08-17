@@ -1,0 +1,22 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type="text" formControlName="displayName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Teléfono</ion-label>
+    <ion-input type="text" formControlName="phoneNumber"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Foto de Perfil</ion-label>
+    <ion-button (click)="takePicture()">Tomar Foto</ion-button>
+  </ion-item>
+
+  <ion-item *ngIf="profileImageUrl">
+    <img [src]="profileImageUrl" alt="Profile Image" />
+  </ion-item>
+
+  <ion-button expand="block" type="submit" [disabled]="profileForm.invalid">Guardar Cambios</ion-button>
+</form>

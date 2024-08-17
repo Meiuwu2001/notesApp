@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formReg" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-text
+      color="danger"
+      *ngIf="formReg.get('email')?.invalid && formReg.get('email')?.touched"
+    >
+      Email es requerido y debe ser válido.
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-text
+      color="danger"
+      *ngIf="
+        formReg.get('password')?.invalid && formReg.get('password')?.touched
+      "
+    >
+      Contraseña es requerido y debe tener al menos 6 caracteres.
+    </ion-text>
+
+    <ion-button expand="block" type="submit" [disabled]="formReg.invalid"
+      >Enviar</ion-button
+    >
+  </form>
+  <ion-button
+    expand="block"
+    color="secondary"
+    (click)="navigateToLogin()"
+    class="ion-margin-top"
+  >
+    Ya tienes una cuenta? Inicia sesión
+  </ion-button>
+</ion-content>
